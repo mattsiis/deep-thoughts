@@ -1,12 +1,14 @@
 {
   "name": "mern-server",
   "version": "1.0.0",
-  "description": "",
   "main": "server.js",
   "scripts": {
-    "start": "node server.js",
+    "start": "if-env NODE_ENV=production && npm run start:prod || npm run start:dev",
     "watch": "nodemon",
-    "seed": "node seeders/seeds.js"
+    "seed": "npm run seed",
+    "start:prod": "npm start",
+    "start:dev": "concurrently \"npm run watch\" \"cd client && npm start\" ",
+    "install": "npm i && cd ../client && npm i"
   },
   "keywords": [],
   "author": "",
@@ -17,10 +19,20 @@
     "express": "^4.17.1",
     "faker": "^4.1.0",
     "graphql": "^16.5.0",
+    "if-env": "^1.0.4",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.9.9"
   },
   "devDependencies": {
     "nodemon": "^2.0.3"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mattsiis/deep-thoughts.git"
+  },
+  "bugs": {
+    "url": "https://github.com/mattsiis/deep-thoughts/issues"
+  },
+  "homepage": "https://github.com/mattsiis/deep-thoughts#readme",
+  "description": ""
 }
